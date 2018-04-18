@@ -11,6 +11,7 @@ namespace Arch_1lab
     {
         static Settings settings;
         static Game game;
+        static IObservable subject;
 
         static void Main(string[] args)
         {
@@ -157,9 +158,9 @@ namespace Arch_1lab
             Console.ResetColor();
         }
 
-        public void Update()
+        public void Update(string data)
         {
-            throw new NotImplementedException();
+            WriteMessage(ConsoleColor.White, data);
         }
     }
 }

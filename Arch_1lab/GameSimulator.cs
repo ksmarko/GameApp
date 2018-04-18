@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arch_1lab
 {
-    public interface IPlayBehaviour : IObservable
+    class GameSimulator
     {
-        void Play();
     }
 }

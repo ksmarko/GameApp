@@ -6,19 +6,25 @@ using System.Threading.Tasks;
 
 namespace Arch_1lab
 {
-    class Mafia : Game
+    class Mafia : Game, IObservable, IObserver
     {
-        public override event GameStateHandler GameEvent;
+        //public override event GameStateHandler GameEvent;
         private bool _isVerified = false;
+        private IObservable subject;
+
+        public override event GameStateHandler GameEvent;
 
         public Mafia(int playersCount)
         {
             Settings = new Settings(7, false, false, true, false, false);
             Name = "Mafia";
             playBehaviour = new MafiaBehaviour(_playersCount);
+            subject = playBehaviour;
             _playersCount = playersCount;
 
-            MafiaBehaviour.MafiaEvent += new MafiaBehaviour.GameStateHandler((string message) => GameEvent.Invoke(message));
+            subject.AddObserver(this);
+
+            //MafiaBehaviour.MafiaEvent += new MafiaBehaviour.GameStateHandler((string message) => GameEvent.Invoke(message));
         }
 
         public override void Play()
@@ -35,6 +41,16 @@ namespace Arch_1lab
             _playersCount = other.PlayersCount;
 
             return _isVerified;
+        }
+
+        public override void NotifyObservers(string data)
+        {
+            base.NotifyObservers(data);
+        }
+
+        public void Update(string data)
+        {
+            NotifyObservers(data);
         }
     }
 }

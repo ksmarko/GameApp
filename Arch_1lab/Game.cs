@@ -53,10 +53,10 @@ namespace Arch_1lab
             observers.Remove(o);
         }
 
-        public void NotifyObservers()
+        public virtual void NotifyObservers(string data)
         {
             foreach (var el in observers)
-                el.Update();
+                el.Update(data);
         }
     }
 }
