@@ -1,24 +1,26 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Arch_1lab
 {
-    class Mafia : Game
+    public class Alias : Game
     {
         public override event GameStateHandler GameEvent;
         private bool _isVerified = false;
 
-        public Mafia(int playersCount)
+        public Alias(int playersCount)
         {
-            Settings = new Settings(7, false, false, true, false, false);
-            Name = "Mafia";
-            playBehaviour = new MafiaBehaviour(_playersCount);
+            Settings = new Settings(4, false, false, true, false, false);
+            Name = "Alias";
             _playersCount = playersCount;
 
-            MafiaBehaviour.MafiaEvent += new MafiaBehaviour.GameStateHandler((string message) => GameEvent.Invoke(message));
+            playBehaviour = new AliasBehaviour(_playersCount);
+            AliasBehaviour.AliasEvent += new AliasBehaviour.GameStateHandler((string message) => GameEvent.Invoke(message));
         }
 
         public override void Play()
@@ -28,7 +30,7 @@ namespace Arch_1lab
 
             playBehaviour.Play();
         }
-       
+
         public override bool Verify(Settings other)
         {
             _isVerified = (base.Verify(other) && other.Cards) ? true : false;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arch_1lab
 {
-    public abstract class Game : IObservable
+    public abstract class Game
     {
         public delegate void GameStateHandler(string message);
         public abstract event GameStateHandler GameEvent;
@@ -16,15 +16,8 @@ namespace Arch_1lab
         public IPlayBehaviour playBehaviour;
 
         protected int _playersCount;
-        protected static List<IObserver> observers;
-
         public abstract void Play();
-
-        static Game()
-        {
-            observers = new List<IObserver>();
-        }
-
+        
         public virtual bool Verify(Settings other)
         {
             if (other == null)
@@ -41,22 +34,6 @@ namespace Arch_1lab
         {
             return $"Name of game {this.Name}" +
                 $"\nMinimal count  of players {Settings.PlayersCount}\n...";
-        }
-
-        public void AddObserver(IObserver o)
-        {
-            observers.Add(o);
-        }
-
-        public void RemoveObserver(IObserver o)
-        {
-            observers.Remove(o);
-        }
-
-        public virtual void NotifyObservers(string data)
-        {
-            foreach (var el in observers)
-                el.Update(data);
         }
     }
 }

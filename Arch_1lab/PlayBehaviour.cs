@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Arch_1lab
 {
-    public interface IPlayBehaviour : IObservable
+    public interface IPlayBehaviour
     {
         void Play();
     }

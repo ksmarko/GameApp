@@ -50,20 +50,5 @@ namespace Arch_1lab
 
             AliasEvent.Invoke($"Game ends. Team {players.ToList().IndexOf(players.Max())} is winner!");
         }
-
-        public void AddObserver(IObserver o)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveObserver(IObserver o)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NotifyObservers(string data)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

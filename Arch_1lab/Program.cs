@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Arch_1lab
 {
-    class Program : IObserver
+    class Program
     {
         static Settings settings;
         static Game game;
-        static IObservable subject;
 
         static void Main(string[] args)
         {
@@ -156,11 +155,6 @@ namespace Arch_1lab
             Console.ForegroundColor = color;
             Console.WriteLine(message);
             Console.ResetColor();
-        }
-
-        public void Update(string data)
-        {
-            WriteMessage(ConsoleColor.White, data);
         }
     }
 }

@@ -101,21 +101,6 @@ namespace Arch_1lab
             return player;
         }
 
-        public void AddObserver(IObserver o)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveObserver(IObserver o)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NotifyObservers(string data)
-        {
-            throw new NotImplementedException();
-        }
-
         class Player
         {
             public delegate void GameStateHandler(string message);
